@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ProfileReader',{
+        category: 'eBalancing',
+        color: '#e6b41e',
+        defaults: {
+            name: {value:""},
+            filename: {value:"/home/zoernert/Development/EnergyProfiles/profile_pv.csv", type:"string",required:true},
+            multiplicator: {value:1, type:"number"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-building-o",
+        label: function() {
+            return this.name||"ProfileReader";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="ProfileReader">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-filename"><i class="fa fa-user-o"></i> Profile File</label>
+        <select id="node-input-filename">
+            <option value="lp_h0.csv">h0</option>
+            <option value="lp_g0.csv">g0</option>
+            <option value="lp_g1.csv">g1</option>
+            <option value="lp_g2.csv">g2</option>
+            <option value="lp_g3.csv">g3</option>
+            <option value="lp_g4.csv">g4</option>
+            <option value="lp_g5.csv">g5</option>
+            <option value="lp_g6.csv">g6</option>
+            <option value="lp_l0.csv">l0</option>
+            <option value="lp_l1.csv">l1</option>
+            <option value="lp_l2.csv">l2</option>
+        </select>
+        
+    </div>
+    <div class="form-row">
+        <label for="node-input-multiplicator"><i class="fa fa-user-o"></i> kWh/a</label>
+        <input type="number" id="node-input-multiplicator" placeholder="1">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="ProfileReader">
+    <p>msg.payload will be send as push message</p>
+</script>

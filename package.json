@@ -1,0 +1,38 @@
+{
+  "name": "energyprofiles",
+  "version": "1.0.0",
+  "description": "Tools for standard energy generation/consumption profil generation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energychain/EnergyProfiles.git"
+  },
+  "keywords": [
+    "energy",
+    "stromdao",
+    "corrently",
+    "profiles",
+    "slp"
+  ],
+  "author": "STROMDAO GmbH <dev@stromdao.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/energychain/EnergyProfiles/issues"
+  },
+  "homepage": "https://github.com/energychain/EnergyProfiles#readme",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "csv": "^6.2.5",
+    "mongodb": "^4.13.0"
+  },
+  "node-red": {
+    "nodes": {
+      "ProfileReader": "nr-reader.js",
+      "PVGeneration": "nr-pvgn.js",
+      "BatteryStorage": "nr-storage.js"
+    }
+  }
+}

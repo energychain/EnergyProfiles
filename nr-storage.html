@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('BatteryStorage',{
+        category: 'eBalancing',
+        color: '#f9e1b7',
+        defaults: {
+            name: {value:""},
+            capacity: {value:5, type:"number"},
+            loadW: {value:1, type:"number"},
+            unloadW: {value:1, type:"number"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "font-awesome/fa-battery",
+        label: function() {
+            return this.name||"BatteryStorage";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="BatteryStorage">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-capacity"><i class="fa fa-user-o"></i> kWh</label>
+        <input type="number" id="node-input-capacity" placeholder="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-loadW"><i class="fa fa-user-o"></i> Charging kW</label>
+        <input type="number" id="node-input-loadW" placeholder="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-unloadW"><i class="fa fa-user-o"></i> Discharge kW</label>
+        <input type="number" id="node-input-unloadW" placeholder="1">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="BatteryStorage">
+    <p>msg.payload will be send as push message</p>
+</script>
