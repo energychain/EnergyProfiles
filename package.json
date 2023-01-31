@@ -32,7 +32,8 @@
     "nodes": {
       "ProfileReader": "nr-reader.js",
       "PVGeneration": "nr-pvgn.js",
-      "BatteryStorage": "nr-storage.js"
+      "BatteryStorage": "nr-storage.js",
+      "WindGeneration": "nr-wind.js"
     }
   }
 }
