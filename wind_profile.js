@@ -19,7 +19,7 @@ const handler = async function(ctx) {
             pwr:windE.sum
         });       
     }
-    let factor = 10000/sum;
+    let factor = 100000/sum;
     for(let i=0;i<r.length;i++) {
         r[i].pwr = Math.round(r[i].pwr * factor);
     }
