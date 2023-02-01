@@ -5,7 +5,6 @@ module.exports = function(RED) {
         const handler = async function(ctx) {
             const startTime = new Date().getTime();
             if(typeof ctx.params.wp == 'undefined') ctx.params.wp = 1000000;
-            
             if(typeof ctx.params.lat == 'undefined') ctx.params.lat = "49.342";
             if(typeof ctx.params.lon == 'undefined') ctx.params.lon = "8.8006813";
             if(typeof ctx.params.deg == 'undefined') ctx.params.deg = "32";
@@ -147,7 +146,8 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         const fs = require("fs");
         const node = this;
-
+        node.api = RED.nodes.getNode(config.api);
+        
         node.on('input', async function(msg) {
             let csv =null;
             if((typeof csv == 'undefined') || (csv == null)) {
@@ -171,5 +171,5 @@ module.exports = function(RED) {
             node.send(msg);
         });
     }
-    RED.nodes.registerType("PVGeneration",Reader);
+    RED.nodes.registerType("PV-Generation",Reader);
 }

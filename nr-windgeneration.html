@@ -1,24 +1,29 @@
 <script type="text/javascript">
-    RED.nodes.registerType('ProfileWind',{
+    RED.nodes.registerType('Wind-Generation',{
         category: 'eBalancing',
         color: '#28aa6e',
         defaults: {
             name: {value:""},
+            api: {required:true,type:"corrently-config"},
             multiplicator: {value:1, type:"number"}
         },
         inputs:1,
         outputs:1,
         icon: "font-awesome/fa-flag",
         label: function() {
-            return this.name||"ProfileWind";
+            return this.name||"Wind-Generation";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="ProfileWind">
+<script type="text/html" data-template-name="Wind-Generation">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-api"><i class="fa fa-tag"></i> Corrently</label>
+        <input type="text" id="node-input-api" placeholder="Name">
     </div>
     <div class="form-row">
         <label for="node-input-multiplicator"><i class="fa fa-user-o"></i> kWh/a</label>
@@ -26,6 +31,6 @@
     </div>
 </script>
 
-<script type="text/html" data-help-name="ProfileWind">
+<script type="text/html" data-help-name="Wind-Generation">
     <p>msg.payload will be send as push message</p>
 </script>

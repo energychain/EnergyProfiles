@@ -1,26 +1,32 @@
 <script type="text/javascript">
-    RED.nodes.registerType('BatteryStorage',{
+    RED.nodes.registerType('ThermalStorage',{
         category: 'eBalancing',
         color: '#f9e1b7',
         defaults: {
             name: {value:""},
-            capacity: {value:5, type:"number"},
+            capacity: {value:20, type:"number"},
+            api: {required:true,type:"corrently-config"},
             loadW: {value:1, type:"number"},
-            unloadW: {value:1, type:"number"}
+            unloadW: {value:1, type:"number"},
+            loss: {value:1, type:"number"},
         },
         inputs:1,
         outputs:1,
         icon: "font-awesome/fa-battery",
         label: function() {
-            return this.name||"BatteryStorage";
+            return this.name||"ThermalStorage";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="BatteryStorage">
+<script type="text/html" data-template-name="ThermalStorage">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-api"><i class="fa fa-tag"></i> Corrently</label>
+        <input type="text" id="node-input-api" placeholder="Name">
     </div>
     <div class="form-row">
         <label for="node-input-capacity"><i class="fa fa-user-o"></i> kWh</label>
@@ -34,8 +40,12 @@
         <label for="node-input-unloadW"><i class="fa fa-user-o"></i> Discharge kW</label>
         <input type="number" id="node-input-unloadW" placeholder="1">
     </div>
+    <div class="form-row">
+        <label for="node-input-loss"><i class="fa fa-user-o"></i> Daily Loss (kWh)</label>
+        <input type="number" id="node-input-loss" placeholder="1">
+    </div>
 </script>
 
-<script type="text/html" data-help-name="BatteryStorage">
+<script type="text/html" data-help-name="ThermalStorage">
     <p>msg.payload will be send as push message</p>
 </script>

@@ -2,11 +2,12 @@ module.exports = function(RED) {
     function Storage(config) {
         RED.nodes.createNode(this,config);
         const node = this;
-
+        node.api = RED.nodes.getNode(config.api);
+        
         node.on('input', async function(msg) {
             let soc = 0;
             const capacity = config.capacity * 1000;
-
+              
             if(Array.isArray(msg.payload)) {
                 for(let j=0;(j<msg.payload.length);j++) {
                     let demand = msg.payload[j][1] * 1;
@@ -39,11 +40,12 @@ module.exports = function(RED) {
                          }
                     }
                     msg.payload[j][1] += 1 * responds;
+                    if(soc > 0) soc -= config.loss/96;
                    // msg.payload[j]=[msg.payload[j][0],msg.payload[j][1],soc];
                 }
             } 
             node.send(msg);
         });
     }
-    RED.nodes.registerType("BatteryStorage",Storage);
+    RED.nodes.registerType("ThermalStorage",Storage);
 }
