@@ -39,6 +39,16 @@ module.exports = function(RED) {
                             soc = 0;
                          }
                     }
+                    if(msg.payload[j].length < 4) {
+                        msg.payload[j] = [msg.payload[j][0],msg.payload[j][1],0,0,0,0];
+                    }
+                    if(responds > 0) {
+                        msg.payload[j][2] += Math.abs(1 * responds); 
+                    }
+                    if(responds < 0) {
+                        msg.payload[j][3] += Math.abs(1 * responds);
+                    }
+                    
                     msg.payload[j][1] += 1 * responds;
                     if(soc > 0) soc -= config.loss/96;
                    // msg.payload[j]=[msg.payload[j][0],msg.payload[j][1],soc];

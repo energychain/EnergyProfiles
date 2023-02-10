@@ -2,8 +2,9 @@
   "name": "energyprofiles",
   "version": "1.0.2",
   "description": "Tools for standard energy generation/consumption profil generation.",
-  "main": "index.js",
+  "main": "standalone.js",
   "scripts": {
+    "standalone": "node standalone.js",
     "test": "mocha"
   },
   "repository": {
@@ -26,7 +27,9 @@
   "homepage": "https://github.com/energychain/EnergyProfiles#readme",
   "dependencies": {
     "axios": "^0.22.0",
-    "csv": "^6.2.5"
+    "csv": "^6.2.5",
+    "express": "^4.18.2",
+    "node-red": "^3.0.2"
   },
   "node-red": {
     "nodes": {
@@ -35,7 +38,9 @@
       "Balance": "nr-balance.js",
       "PV-Generation": "nr-pvgeneration.js",
       "Battery": "nr-battery.js",
-      "ThermalStorage":"nr-thermstorage.js",
+      "Chart": "nr-chart.js",
+      "Aggregation": "nr-aggregation.js",
+      "ThermalStorage": "nr-thermstorage.js",
       "APIConfiguration": "corrently-api.js",
       "Wind-Generation": "nr-windgeneration.js"
     }

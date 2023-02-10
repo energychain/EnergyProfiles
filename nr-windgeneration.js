@@ -30,13 +30,21 @@ module.exports = function(RED) {
                 rows[i] = rows[i].split(';');
                 if(isNaN(rows[i][1])) rows[i][1] = 0;
 
+                rows[i][4] = rows[i][1] * config.multiplicator;
                 rows[i][1] *= config.multiplicator;
                 rows[i][1] = rows[i][1];
+                rows[i][2] = 0;
+                rows[i][3] = 0;
+                rows[i][5] = 0;
             }
             rows = rows.slice(1);
             if(Array.isArray(msg.payload)) {
                 for(let j=0;(j<msg.payload.length)&&(j<rows.length);j++) {
+                    if(msg.payload[j].length < 4) {
+                        msg.payload[j] = [msg.payload[j][0],msg.payload[j][1],0,0,0,0];
+                    }
                     msg.payload[j][1] += rows[j][1];
+                    msg.payload[j][4] += rows[j][1];
                 }
             } else {
                 msg.payload = rows;

@@ -52,5 +52,14 @@
 </script>
 
 <script type="text/html" data-help-name="PV-Generation">
-    <p>msg.payload will be send as push message</p>
+    <strong>Photovoltaik Erzeugung</strong>
+    <h3>Konfiguration</h3>
+    <ul>
+        <li><code>Generation (kWha)</code><br/>Jahreserzeugung in kWh laut Anlagenspezifikation.</li>
+        <li><code>Azimuth</code><br/>Abweichung von Süden (180°) der Ausrichtung der Anlage. -90° = Ost Ausrichtung / 90° = West Ausrichtung.</li>
+        <li><code>Degree Pitch</code><br/>Neigungswinkel der Anlage (Bsp: Dachschräge)</li>
+        <li><code>Latitude/Longitude</code><br/>Geo-Koordinaten des Anlagenstandortes</li>
+    </ul>
+    <h3>Funktion</h3>
+    <p>Auf Basis der konfigurierten Parameter wird ein Erzeugungsgang ermittelt für alle 15 Minuten eines Jahres.</p>
 </script>

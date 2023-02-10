@@ -137,7 +137,7 @@ module.exports = function(RED) {
     
             for(let i=0;i<rawQ.length;i++) {
                 totalPower += rawQ[i].pwr;
-                csv.push([new Date(rawQ[i].q * 900000).toISOString(),rawQ[i].pwr/1000]);
+                csv.push([new Date(rawQ[i].q * 900000).toISOString(),rawQ[i].pwr/1000,0,0,rawQ[i].pwr/1000,0]);
             }
                         
             return csv;
@@ -160,12 +160,17 @@ module.exports = function(RED) {
             }
             if(Array.isArray(msg.payload)) {
                 for(let j=0;((j<msg.payload.length)&&(j<csv.length));j++) {
+                    if(msg.payload[j].length < 4) {
+                        msg.payload[j] = [msg.payload[j][0],msg.payload[j][1],0,0,0,0];
+                    }
                     msg.payload[j][1] += (csv[j][1]  * config.multiplicator);
+                    msg.payload[j][4] += (csv[j][1]  * config.multiplicator);
                 }
             } else {
                 msg.payload = csv;
                 for(let j=0;j<msg.payload.length;j++) {
                     msg.payload[j][1] *=  config.multiplicator;
+                    msg.payload[j][4] *=  config.multiplicator;
                 }
             }
             node.send(msg);
