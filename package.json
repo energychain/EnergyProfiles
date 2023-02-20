@@ -1,6 +1,6 @@
 {
   "name": "energyprofiles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Tools for standard energy generation/consumption profil generation.",
   "main": "standalone.js",
   "scripts": {

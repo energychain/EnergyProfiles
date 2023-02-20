@@ -18,8 +18,8 @@ module.exports = function(RED) {
                 } else {
                     neg += msg.payload[i][1];
                 }
-                total_gen += 1 * msg.payload[i][4];
-                total_cons += 1 * msg.payload[i][5];
+                total_gen += Math.round(1* msg.payload[i][4]);
+                total_cons -= Math.round(1* msg.payload[i][5]);
             }
             balance = Math.round(balance / 1000);
             neg = Math.round(neg / 1000);
